@@ -37,7 +37,7 @@ def store_document(file):
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     st.session_state['ocr_result'] = response
-    st.write("store document response", response.text)
+    # st.write("store document response", response.text)
 
 
 def query(question):
