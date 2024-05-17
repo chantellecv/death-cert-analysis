@@ -79,7 +79,7 @@ def main():
         with st.spinner("Processing..."):
             try:
                 store_document(result)
-                if 
+            
                 st.success("Document processed successfully!")
             except:
                 st.error("There was an error processing your document. Please try again.")
