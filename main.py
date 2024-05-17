@@ -61,8 +61,9 @@ def main():
     if submit_ocr and ocr_file is not None:
         with st.spinner("Uploading..."):
             try:
-                result = text_recognition(ocr_file)
                 st.write("debug")
+
+                result = text_recognition(ocr_file)
                 # st.session_state['ocr_result'] = result
                 st.success("Document uploaded successfully!")
             except:
