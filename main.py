@@ -41,7 +41,7 @@ def store_document(file):
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     st.session_state['ocr_result'] = response
-    # st.write("store document response", response.text)
+    st.write("store document response", response.text)
 
 
 def query(question):
@@ -79,6 +79,7 @@ def main():
         with st.spinner("Processing..."):
             try:
                 store_document(result)
+                if 
                 st.success("Document processed successfully!")
             except:
                 st.error("There was an error processing your document. Please try again.")
