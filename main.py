@@ -23,6 +23,7 @@ def text_recognition(file):
             text = pytesseract.image_to_string(page)
             # Print or process the extracted text
             result_str += f"Page {i+1}:\n{text}\n"
+        st.write(result_str)
         return result_str
     else:
         return "Error: Please upload a file."
