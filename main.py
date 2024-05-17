@@ -10,12 +10,9 @@ def text_recognition(file):
     if file:  
         try:  
             pdf_document = file.read()
-            st.write("debug1")
             pages = convert_from_bytes(pdf_document)
-            st.write("debug2")
         except Exception as e:
             st.error(f"An error occurred: {e}")
-
         result_str = ""
         # Perform OCR on each page
         try:
