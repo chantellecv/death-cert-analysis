@@ -62,6 +62,7 @@ def main():
         with st.spinner("Uploading..."):
             try:
                 result = text_recognition(ocr_file)
+                st.write("debug")
                 # st.session_state['ocr_result'] = result
                 st.success("Document uploaded successfully!")
             except:
