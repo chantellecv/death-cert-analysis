@@ -18,11 +18,14 @@ def text_recognition(file):
 
         result_str = ""
         # Perform OCR on each page
-        for i, page in enumerate(pages):
-            # Perform OCR on the page image
-            text = pytesseract.image_to_string(page)
-            # Print or process the extracted text
-            result_str += f"Page {i+1}:\n{text}\n"
+        try:
+            for i, page in enumerate(pages):
+                # Perform OCR on the page image
+                text = pytesseract.image_to_string(page)
+                # Print or process the extracted text
+                result_str += f"Page {i+1}:\n{text}\n"
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
         st.write(result_str)
         return result_str
     else:
