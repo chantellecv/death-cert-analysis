@@ -9,7 +9,10 @@ import json
 def text_recognition(file): 
     if file:    
         pdf_document = file.read()
+        st.write("debug1")
         pages = convert_from_bytes(pdf_document)
+        st.write("debug2")
+
         result_str = ""
         # Perform OCR on each page
         for i, page in enumerate(pages):
@@ -61,8 +64,6 @@ def main():
     if submit_ocr and ocr_file is not None:
         with st.spinner("Uploading..."):
             try:
-                st.write("debug")
-
                 result = text_recognition(ocr_file)
                 # st.session_state['ocr_result'] = result
                 st.success("Document uploaded successfully!")
