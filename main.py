@@ -23,7 +23,6 @@ def text_recognition(file):
                 result_str += f"Page {i+1}:\n{text}\n"
         except Exception as e:
             st.error(f"An error occurred: {e}")
-        st.write(result_str)
         return result_str
     else:
         return "Error: Please upload a file."
@@ -39,7 +38,6 @@ def store_document(file):
     response = requests.request("POST", url, headers=headers, data=payload)
     st.session_state['ocr_result'] = response
     st.write("store document response", response.text)
-    return response.json()
 
 
 def query(question):
@@ -72,16 +70,14 @@ def main():
                 text = text_recognition(ocr_file)
                 # st.session_state['ocr_result'] = result
                 st.success("Document uploaded successfully!")
-            except:
-                st.error("There was an error uploading your document. Please try again.")
+            except Exception as e:
+                st.error(f"There was an error uploading your document: {e} Please try again.")
         with st.spinner("Processing..."):
             try:
-                result = store_document(text)
-                # if result.stat
-                st.write("resulttt", result)
+                store_document(text)
                 st.success("Document processed successfully!")
-            except:
-                st.error("There was an error processing your document. Please try again.")
+            except Exception as e:
+                st.error(f"There was an error processing your document: {e} Please try again.")
         
     st.write("----")  
 
