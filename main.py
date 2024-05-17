@@ -42,6 +42,7 @@ def store_document(file):
     response = requests.request("POST", url, headers=headers, data=payload)
     st.session_state['ocr_result'] = response
     st.write("store document response", response.text)
+    return response
 
 
 def query(question):
@@ -71,15 +72,16 @@ def main():
     if submit_ocr and ocr_file is not None:
         with st.spinner("Uploading..."):
             try:
-                result = text_recognition(ocr_file)
+                text = text_recognition(ocr_file)
                 # st.session_state['ocr_result'] = result
                 st.success("Document uploaded successfully!")
             except:
                 st.error("There was an error uploading your document. Please try again.")
         with st.spinner("Processing..."):
             try:
-                store_document(result)
-            
+                result = store_document(text)
+                # if result.stat
+                st.write("resulttt", result)
                 st.success("Document processed successfully!")
             except:
                 st.error("There was an error processing your document. Please try again.")
